@@ -1,0 +1,10 @@
+numpy==1.21.6
+pandas==1.3.5
+scikit-image==0.18.3
+scikit-learn==1.0.2
+transformers @ git+https://github.com/huggingface/transformers.git@a42242da7c44d64c66a878cca65bc86dd3f626af
+torch==1.11.0
+notebook==6.4.11
+nltk==3.6.5
+rank-bm25==0.2.1
+datasets
