@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>RELEX</title>
+     <link rel="stylesheet" href="./css/style.css">
+     <link rel="stylesheet" href="./css/style-annotations.css">
+     <link rel="stylesheet" href="./css/font-awesome-4.7.0/css/font-awesome.min.css">
+     <script src="./js/jquery-aux.js"></script>
+
+     <!-- highlight-within-textarea CSS/JS -->
+     <link href="./css/jquery.highlight-within-textarea.css" rel="stylesheet">
+     <link href="./css/spin.css" rel="stylesheet">
+     <link href="./css/buttonLoader.css" rel="stylesheet">
+     <script src="./js/jquery.highlight-within-textarea.js"></script>
+     <script src="./js/jquery.buttonLoader.js"></script>
+     <!-- <script src="./js/spin.js" type="module"></script> -->
+
+     <script src="./js/server.js"></script>
+     <script src="./js/log.js"></script>
+     <script src="./js/modal.js"></script>
+     <script src="./js/recipes5.js"></script>
+
+
+</head>
+
+<body>
+
+     <span id="no-reflection"></span>
+
+
+     <section class="section is-small whole-section">
+          <div class="container">
+               <div class="columns">
+
+                    <div class="column is-three-quarters" style="margin-bottom: 75px !important;">
+                         <h1 class="title">RELEX - Recipe Learning</h1>
+                         <h2 class="subtitle">
+                              A simple tool to help you improve your recipe writing skills.
+
+                    </div>
+                    <div class="column is-one-quarter">
+                         <div
+                              style="display: flex; flex-direction: row; width: 100%; justify-content: flex-end; align-items: center; align-self: center; align-content: center;">
+                              <button class="js-modal-trigger button no-border" data-target="modal-js-help">
+                                   <span class="icon is-small">
+                                        <i class="fa fa-question-circle help-icon"></i>
+                                   </span>
+                              </button>
+                         </div>
+                    </div>
+
+               </div>
+          </div>
+
+
+
+          <div class="container main-container">
+
+               <div class="columns">
+
+                    <div class="column is-centered text-area-column">
+                         <div id="top-dialog-container">
+                              <br />
+                              <br />
+                              <div id="top-dialog">
+                                   <div id='questions-div'>
+                                        <br />
+                                        <h2 style="text-align: center; font-size: 150%; font-weight: bold;">
+                                             Reflection Space</h2>
+                                        <h3 style="text-align: center;"> On the right,
+                                             you are seeing a recipe from another user. Please compare and reflect on
+                                             your recipe by
+                                             answering the following questions.</h3>
+                                        <br />
+                                        <div class="columns  is-centered">
+                                             <h2 class="question-caption">
+                                                  <p style="padding: 5px 35px; text-align: center;"> <b>1) What aspects
+                                                            of this example
+                                                            recipe do you find interesting, useful,
+                                                            convincing, and which not?</b>
+                                                  </p>
+                                             </h2>
+                                             <p></p>
+                                        </div>
+                                        <div class="columns is-centered" style="padding: 5px 35px;">
+                                             <textarea class="textarea is-hovered" rows="2" cols="46"
+                                                  id="q1"> </textarea>
+                                        </div>
+
+                                        <div class="columns  is-centered">
+                                             <br>
+                                             <h2 class="question-caption">
+                                                  <p style="padding: 5px 35px; text-align: center;"> <b> 2) What
+                                                            deficiencies does your recipe have
+                                                            compared to the example
+                                                            recipe on the right?</b> </p>
+                                             </h2>
+
+                                        </div>
+                                        <div class="columns is-centered" style="padding: 5px 35px;">
+                                             <textarea class="textarea is-hovered" rows="2" cols="46"
+                                                  id="q2"> </textarea>
+                                        </div>
+                                   </div>
+
+                                   <div class="column is-centered" style="text-align: center; margin-top: 45px;">
+                                        <button class="button is-medium is-link" id="save-button">Save</button>
+                                   </div>
+                              </div>
+                              <br />
+                         </div>
+
+                         <br />
+                         <br />
+
+                         <h2 style="text-align: center; font-size: 150%; font-weight: bold;">Text Editor </h2>
+                         <h3 style="text-align: center;"> Write your recipe here, then, click on the "Analyze" button
+                              to receive tips on how to improve your recipe. </h3>
+
+                         <br />
+
+
+                         <div class="box" style="height: 80% !important; max-height: 450px !important;">
+                              <div contenteditable="true" id="recipe" class="class-example hwt-input hwt-content"
+                                   rows="37" cols="50"
+                                   style='overflow-y: scroll; height: 100% !important; max-height: 450px !important; padding: 4px 4px;; '>
+                              </div>
+                         </div>
+
+                         <div style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
+                              <button class="button is-medium is-link" id="submit-button">
+                                   Analyze
+                              </button>
+                              <button class="button is-medium is-link is-light" style=" margin-left: 15px; display: none;"
+                                   id="reset-button">
+                                   Save and Reset
+                              </button>
+
+                         </div>
+                         <br />
+                         <div style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
+                              <button class="js-modal-trigger button is-light is-link is-success" id="help-button"
+                                   data-target="modal-js-help">
+                                   Help
+                              </button>
+                         </div>
+                         <br /><br />
+
+
+
+                    </div>
+
+
+
+
+
+                    <div class="column dashboard">
+                         <br />
+                         <h2 style="text-align: center; font-size: 150%; font-weight: bold">Personal Dashboard
+                         </h2>
+
+
+                         <h3 style="text-align: center;">This dashboard shows some tips to help you improve your
+                              recipe. <button class="js-modal-trigger" id="explain-button" style="display: none;"
+                                   data-target="modal-js-example">Details</button></h3>
+
+                         <br />
+
+                         <div class="columns">
+
+
+                              <div class="column" id="example-recipe-div" style="display: none;">
+
+                                   <div class="box" id='example-box'
+                                        style="background-color: rgba(235, 231, 231, 0.5) !important; height: 27.5rem !important;">
+                                        <div id="example_steps" class="class-example hwt-input hwt-content" rows="30"
+                                             cols="50"
+                                             style='background-color: transparent !important; overflow-y: scroll; height: 25.5rem;'>
+                                             <p>Tips to improve your recipe:</p>
+
+                                             <li>Write the ingredients and the steps in separate sections.</li>
+                                             <li>List each ingredient separately.</li>
+                                             <li>List each ingredient separately.</li>
+                                             <li>Enumerate the steps.</li>
+                                             <li> Describe how a mixture should look or feel at a certain stage.</li>
+                                             <li>Give the reasons for doing the actions.</li>
+                                             <li>Describe until when to do the actions.</li>
+                                             <li>Specify the form, type and kind of the ingredients when relevant for
+                                                  the recipe</li>
+                                             <li>Indicate the size and form of cookware if
+                                                  important to recipe results.</li>
+                                             <li>Indicate whether the cookware is covered or uncovered.</li>
+                                             <li> Specify the length of cooking time and the kind of heat—low, medium, or
+                                                  high.
+                                             <li>Adding an ingredient doesn’t indicate mixing or stirring. Do not use
+                                                  “add”
+                                                  if another verb (“stir,” “mix,” “beat,” etc.) is more specific.</li>
+
+                                        </div>
+                                   </div>
+
+
+                              </div>
+                         </div>
+                    </div>
+
+
+
+
+                    <div id="modal-js-example" class="modal">
+                         <div class="modal-background"></div>
+                         <div class="modal-card">
+                              <header class="modal-card-head">
+                                   <p class="modal-card-title">Details</p>
+                                   <button class="delete" aria-label="close"></button>
+                              </header>
+                              <section class="modal-card-body">
+                                   <p>
+                                   <p>
+                                        In the Personal Dashboard, we show a list of positive characteristics from
+                                        recipes taken from "The Recipe Writer's
+                                        Handbook" (Gibbs & Baker, 2001) to help you improve the writing quality of your
+                                        recipe.
+                                   </p>
+
+                                   </p>
+
+
+                              </section>
+                         </div>
+                    </div>
+
+
+
+                    <div id="modal-js-how-to" class="modal">
+                         <div class="modal-background"></div>
+                         <div class="modal-card">
+                              <header class="modal-card-head">
+                                   <p class="modal-card-title">Help</p>
+                                   <button class="delete" aria-label="close"></button>
+                              </header>
+                              <section class="modal-card-body">
+                                   <p>
+
+                                        <li>Write a cooking recipe on the Text Editor and click on the "Analyze" button
+                                             to receive help.</li>
+
+                                        <li>In the Personal Dashboard, you will see a list of positive characteristics
+                                             from recipes taken from "The Recipe Writer's
+                                             Handbook" (Gibbs & Baker, 2001) to help you improve the writing quality of
+                                             your recipe. </li>
+
+
+                                   </p>
+                              </section>
+                         </div>
+                    </div>
+
+
+                    <div id="modal-js-help" class="modal">
+                         <div class="modal-background"></div>
+                         <div class="modal-card">
+                              <header class="modal-card-head">
+                                   <p class="modal-card-title">How to use RELEX</p>
+                                   <button class="delete" aria-label="close"></button>
+                              </header>
+                              <section class="modal-card-body">
+                                   <p>
+
+                                        <li>First, write a cooking recipe in the Text Editor. Then, click on the
+                                             "Analyze" button to receive help. </li>
+                                        <li>In the Personal Dashboard, you will see a list of positive characteristics
+                                             from recipes taken from "The Recipe Writer's
+                                             Handbook" (Gibbs & Baker, 2001) to help you improve the writing quality of
+                                             your recipe. </li>
+                                        <li>Afterward, edit your recipe accordingly based on the positive
+                                             characteristics from the list.</li>
+
+                                   </p>
+                              </section>
+                         </div>
+                    </div>
+
+               </div>
+
+               <div class="columns" style="padding-left: 15% !important; padding-right: 15% !important;">
+                    <div class="column is-centered">
+
+                    </div>
+                    <div class="column is-centered">
+
+                    </div>
+               </div>
+
+
+
+          </div>
+     </section>
+
+
+
+
+</body>
+
+</html>

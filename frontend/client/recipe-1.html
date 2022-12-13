@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>RELEX</title>
+     <link rel="stylesheet" href="./css/style.css">
+     <link rel="stylesheet" href="./css/style-annotations.css">
+     <link rel="stylesheet" href="./css/font-awesome-4.7.0/css/font-awesome.min.css">
+     <script src="./js/jquery-aux.js"></script>
+
+     <!-- highlight-within-textarea CSS/JS -->
+     <link href="./css/jquery.highlight-within-textarea.css" rel="stylesheet">
+     <link href="./css/spin.css" rel="stylesheet">
+     <link href="./css/buttonLoader.css" rel="stylesheet">
+     <script src="./js/jquery.highlight-within-textarea.js"></script>
+     <script src="./js/jquery.buttonLoader.js"></script>
+     <!-- <script src="./js/spin.js" type="module"></script> -->
+
+     <script src="./js/server.js"></script>
+     <script src="./js/log.js"></script>
+     <script src="./js/modal.js"></script>
+     <script src="./js/recipes.js"></script>
+
+
+</head>
+
+<body>
+
+
+
+     <section class="section is-small whole-section">
+          <div class="container">
+               <div class="columns">
+
+                    <div class="column is-three-quarters" style="margin-bottom: 75px !important;">
+                         <h1 class="title">RELEX - Recipe Learning through Examples</h1>
+                         <h2 class="subtitle">
+                              A simple tool to help you improve your recipe writing skills.
+
+                    </div>
+                    <div class="column is-one-quarter">
+                         <div
+                              style="display: flex; flex-direction: row; width: 100%; justify-content: flex-end; align-items: center; align-self: center; align-content: center;">
+                              <button class="js-modal-trigger button no-border" data-target="modal-js-help">
+                                   <span class="icon is-small">
+                                        <i class="fa fa-question-circle help-icon"></i>
+                                   </span>
+                              </button>
+                         </div>
+                    </div>
+
+               </div>
+          </div>
+
+
+
+          <div class="container main-container">
+
+               <div class="columns">
+
+                    <div class="column is-centered text-area-column">
+                         <div id="top-dialog-container">
+                              <br />
+                              <br />
+                              <div id="top-dialog">
+                                   <div id='questions-div'>
+                                        <br />
+                                        <h2 style="text-align: center; font-size: 150%; font-weight: bold;">
+                                             Reflection Space</h2>
+                                        <h3 style="text-align: center;"> On the right,
+                                             you are seeing a recipe from another user. Please compare and reflect on
+                                             your recipe by
+                                             answering the following questions.</h3>
+                                        <br />
+                                        <div class="columns  is-centered">
+                                             <h2 class="question-caption">
+                                                  <p style="padding: 5px 35px; text-align: center;"> <b>1) What aspects
+                                                            of this example
+                                                            recipe do you find interesting, useful,
+                                                            convincing, and which not?</b>
+                                                  </p>
+                                             </h2>
+                                             <p></p>
+                                        </div>
+                                        <div class="columns is-centered" style="padding: 5px 35px;">
+                                             <textarea class="textarea is-hovered" rows="2" cols="46"
+                                                  id="q1"> </textarea>
+                                        </div>
+
+                                        <div class="columns  is-centered">
+                                             <br>
+                                             <h2 class="question-caption">
+                                                  <p style="padding: 5px 35px; text-align: center;"> <b> 2) What
+                                                            deficiencies does your recipe have
+                                                            compared to the example
+                                                            recipe on the right?</b> </p>
+                                             </h2>
+
+                                        </div>
+                                        <div class="columns is-centered" style="padding: 5px 35px;">
+                                             <textarea class="textarea is-hovered" rows="2" cols="46"
+                                                  id="q2"> </textarea>
+                                        </div>
+                                   </div>
+
+                                   <div class="column is-centered" style="text-align: center; margin-top: 45px;">
+                                        <button class="button is-medium is-link" id="save-button">Save</button>
+                                   </div>
+                              </div>
+                              <br />
+                         </div>
+
+                         <br />
+                         <br />
+
+                         <h2 style="text-align: center; font-size: 150%; font-weight: bold;">Text Editor </h2>
+                         <h3 style="text-align: center;"> Write your recipe here, then, click on the "Analyze" button
+                              to receive personalized tips shown in an example recipe. </h3>
+
+                         <br />
+
+
+                         <div class="box" style="height: 80% !important; max-height: 450px !important;">
+                              <div contenteditable="true" id="recipe" class="class-example hwt-input hwt-content"
+                                   rows="37" cols="50"
+                                   style='overflow-y: scroll; height: 100% !important; max-height: 450px !important; padding: 4px 4px;; '>
+                              </div>
+                         </div>
+
+                         <div style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
+                              <button class="button is-medium is-link" id="submit-button">
+                                   Analyze
+                              </button>
+                              <button class="button is-medium is-link is-light" style=" margin-left: 15px; display: none;"
+                                   id="reset-button">
+                                   Save and Reset
+                              </button>
+
+                         </div>
+                         <br />
+                         <div style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
+                              <button class="js-modal-trigger button is-light is-link is-success" id="help-button"
+                                   data-target="modal-js-help">
+                                   Help
+                              </button>
+                         </div>
+                         <br /><br />
+
+
+
+                    </div>
+
+
+
+
+
+                    <div class="column dashboard">
+                         <br />
+                         <h2 style="text-align: center; font-size: 150%; font-weight: bold">Personal Dashboard
+                         </h2>
+
+
+                         <h3 style="text-align: center;">This dashboard shows a recipe chosen based on your text,
+                              exemplifying
+                              some improvements you can make. <button class="js-modal-trigger" id="explain-button"
+                                   style="display: none;" data-target="modal-js-example">Details</button></h3>
+
+                         <br />
+
+                         <div class="columns">
+                              <div class="column masked-overflow" style="overflow-y: scroll !important; height: 27.5rem !important;  
+          overflow: overlay; scrollbar-color: while rgb(210, 210, 245);">
+                                   <div class="column">
+
+
+                                        <span class="hint-1" id="hint-1"  style="display: none;">Tips on Structure</span>
+            
+                                        <div class="notification is-warning is-light" id="noti-0" title= "Which headings and subheadings enable you to arrange the recipe in a logical order?"  style="display: none;" onmouseenter="onHoverSentenceClass(0)" onmouseleave="onOutHoverSentenceClass(0)"> 
+                                             Write the ingredients and the steps in separate sections. 
+                                             <button class="delete" id="butt-0"> </button>
+                                        </div> 
+                                        
+                                        <div class="notification is-warning is-light" id="noti-1" title= "How can you best structure the recipe in a meaningful way?"  style="display: none;" onmouseenter="onHoverSentenceClass(1)" onmouseleave="onOutHoverSentenceClass(1)"> 
+                                             List each ingredient separately. 
+                                             <button class="delete" id="butt-1"> </button>
+                                        </div> 
+                                        
+                                        <div class="notification is-warning is-light" id="noti-2" title= "How can you best structure the recipe in a meaningful way?"  style="display: none;" onmouseenter="onHoverSentenceClass(2)" onmouseleave="onOutHoverSentenceClass(2)"> 
+                                             Enumerate the steps. 
+                                             <button class="delete" id="butt-2"> </button>
+                                        </div> 
+                                        
+                                            <span class="hint-2" id="hint-2"  style="display: none;">Tips on the Specificity of Ingredients</span>
+                                            
+                                        <div class="notification is-success is-light" id="noti-3" title= "How can your recipe be more specific? "  style="display: none;" onmouseenter="onHoverSentenceClass(3)" onmouseleave="onOutHoverSentenceClass(3)"> 
+                                             Indicate whether the meat, poultry, or seafood is boned, skinned, or otherwise prepared. 
+                                             <button class="delete" id="butt-3"> </button>
+                                        </div> 
+                                        
+                                        <div class="notification is-success is-light" id="noti-4" title= "How can your recipe be more specific? "  style="display: none;" onmouseenter="onHoverSentenceClass(4)" onmouseleave="onOutHoverSentenceClass(4)"> 
+                                             Indicate whether the fat is firm, softened, or melted. 
+                                             <button class="delete" id="butt-4"> </button>
+                                        </div> 
+                                        
+                                        <div class="notification is-success is-light" id="noti-5" title= "How can your recipe be more specific? "  style="display: none;" onmouseenter="onHoverSentenceClass(5)" onmouseleave="onOutHoverSentenceClass(5)"> 
+                                             Indicate whether the butter is salted or unsalted. 
+                                             <button class="delete" id="butt-5"> </button>
+                                        </div> 
+                                        
+                                        <div class="notification is-success is-light" id="noti-6"  style="display: none;" onmouseenter="onHoverSentenceClass(6)" onmouseleave="onOutHoverSentenceClass(6)"> 
+                                             Indicate the kind of yeast. 
+                                             <button class="delete" id="butt-6"> </button>
+                                        </div> 
+                                        
+                                        <div class="notification is-success is-light" id="noti-7"  style="display: none;" onmouseenter="onHoverSentenceClass(7)" onmouseleave="onOutHoverSentenceClass(7)"> 
+                                             For canned foods, indicate drained or undrained, and whether to reserve the liquid or not. 
+                                             <button class="delete" id="butt-7"> </button>
+                                        </div> 
+                                        
+                                        <div class="notification is-success is-light" id="noti-8"  style="display: none;" onmouseenter="onHoverSentenceClass(8)" onmouseleave="onOutHoverSentenceClass(8)"> 
+                                             Indicate whether the cottage cheese has small curd, large curd, is creamed, or dry, if important to recipe results. 
+                                             <button class="delete" id="butt-8"> </button>
+                                        </div> 
+                                        
+                                        <div class="notification is-success is-light" id="noti-9"  style="display: none;" onmouseenter="onHoverSentenceClass(9)" onmouseleave="onOutHoverSentenceClass(9)"> 
+                                             Indicated whether cheese should be shredded, crumbled, cubed or other form. 
+                                             <button class="delete" id="butt-9"> </button>
+                                        </div> 
+                                        
+                                        <div class="notification is-success is-light" id="noti-10" title= "This is important when the use of a specific one is preferred "  style="display: none;" onmouseenter="onHoverSentenceClass(10)" onmouseleave="onOutHoverSentenceClass(10)"> 
+                                             For cherries and berries, indicate the form fresh, frozen, canned, dried, or candied. 
+                                             <button class="delete" id="butt-10"> </button>
+                                        </div> 
+                                        
+                                        <div class="notification is-success is-light" id="noti-11" title= "This is important when the use of a specific one is preferred "  style="display: none;" onmouseenter="onHoverSentenceClass(11)" onmouseleave="onOutHoverSentenceClass(11)"> 
+                                             For almonds, indicate “blanched” or “unblanched” when the use of only one is preferred. 
+                                             <button class="delete" id="butt-11"> </button>
+                                        </div> 
+                                        
+                                        <div class="notification is-success is-light" id="noti-12"  style="display: none;" onmouseenter="onHoverSentenceClass(12)" onmouseleave="onOutHoverSentenceClass(12)"> 
+                                             For anise, specify the form. 
+                                             <button class="delete" id="butt-12"> </button>
+                                        </div> 
+                                        
+                                        <div class="notification is-success is-light" id="noti-13"  style="display: none;" onmouseenter="onHoverSentenceClass(13)" onmouseleave="onOutHoverSentenceClass(13)"> 
+                                             For bouillon, specify the form. 
+                                             <button class="delete" id="butt-13"> </button>
+                                        </div> 
+                                        
+                                        <div class="notification is-success is-light" id="noti-14" title= "This is important when the use of a specific one is preferred "  style="display: none;" onmouseenter="onHoverSentenceClass(14)" onmouseleave="onOutHoverSentenceClass(14)"> 
+                                             For caramels, indicate the flavor rather than the color. 
+                                             <button class="delete" id="butt-14"> </button>
+                                        </div> 
+                                        
+                                        <div class="notification is-success is-light" id="noti-15"  style="display: none;" onmouseenter="onHoverSentenceClass(15)" onmouseleave="onOutHoverSentenceClass(15)"> 
+                                             For cardamom, specify the form. 
+                                             <button class="delete" id="butt-15"> </button>
+                                        </div> 
+                                        
+                                        <div class="notification is-success is-light" id="noti-16"  style="display: none;" onmouseenter="onHoverSentenceClass(16)" onmouseleave="onOutHoverSentenceClass(16)"> 
+                                             For cinnamon, specify the form. 
+                                             <button class="delete" id="butt-16"> </button>
+                                        </div> 
+                                        
+                                        <div class="notification is-success is-light" id="noti-17"  style="display: none;" onmouseenter="onHoverSentenceClass(17)" onmouseleave="onOutHoverSentenceClass(17)"> 
+                                             Indicate the form of clams. 
+                                             <button class="delete" id="butt-17"> </button>
+                                        </div> 
+                                        
+                                        <div class="notification is-success is-light" id="noti-18"  style="display: none;" onmouseenter="onHoverSentenceClass(18)" onmouseleave="onOutHoverSentenceClass(18)"> 
+                                             Indicate the form of nuts. 
+                                             <button class="delete" id="butt-18"> </button>
+                                        </div> 
+                                        
+                                        <div class="notification is-success is-light" id="noti-19"  style="display: none;" onmouseenter="onHoverSentenceClass(19)" onmouseleave="onOutHoverSentenceClass(19)"> 
+                                             Specify the form of peels, freshly grated, dried grated, cut in spirals, strips, or other form 
+                                             <button class="delete" id="butt-19"> </button>
+                                        </div> 
+                                        
+                                        <div class="notification is-success is-light" id="noti-20"  style="display: none;" onmouseenter="onHoverSentenceClass(20)" onmouseleave="onOutHoverSentenceClass(20)"> 
+                                             Indicate the type of pepper. 
+                                             <button class="delete" id="butt-20"> </button>
+                                        </div> 
+                                        
+                                        <div class="notification is-success is-light" id="noti-21" title= "If it makes no difference, it is not necessary to specify."  style="display: none;" onmouseenter="onHoverSentenceClass(21)" onmouseleave="onOutHoverSentenceClass(21)"> 
+                                             Indicate the type of pineapple (fresh or canned). 
+                                             <button class="delete" id="butt-21"> </button>
+                                        </div> 
+                                        
+                                        <div class="notification is-success is-light" id="noti-22" title= "If it makes no difference, it is not necessary to specify."  style="display: none;" onmouseenter="onHoverSentenceClass(22)" onmouseleave="onOutHoverSentenceClass(22)"> 
+                                             Indicate the type of raisins. 
+                                             <button class="delete" id="butt-22"> </button>
+                                        </div> 
+                                        
+                                        <div class="notification is-success is-light" id="noti-23" title= "If it makes no difference, it is not necessary to specify."  style="display: none;" onmouseenter="onHoverSentenceClass(23)" onmouseleave="onOutHoverSentenceClass(23)"> 
+                                             Indicate whether canned tuna is packed in oil or water. 
+                                             <button class="delete" id="butt-23"> </button>
+                                        </div> 
+                                        
+                                        <div class="notification is-success is-light" id="noti-24"  style="display: none;" onmouseenter="onHoverSentenceClass(24)" onmouseleave="onOutHoverSentenceClass(24)"> 
+                                             Specify the vanilla form. 
+                                             <button class="delete" id="butt-24"> </button>
+                                        </div> 
+                                        
+                                        <div class="notification is-success is-light" id="noti-25"  style="display: none;" onmouseenter="onHoverSentenceClass(25)" onmouseleave="onOutHoverSentenceClass(25)"> 
+                                             Indicate the type of vinegar. 
+                                             <button class="delete" id="butt-25"> </button>
+                                        </div> 
+                                        
+                                        <div class="notification is-success is-light" id="noti-26"  style="display: none;" onmouseenter="onHoverSentenceClass(26)" onmouseleave="onOutHoverSentenceClass(26)"> 
+                                             Specify the type of yogurt. 
+                                             <button class="delete" id="butt-26"> </button>
+                                        </div> 
+                                        
+                                        <div class="notification is-success is-light" id="noti-27"  style="display: none;" onmouseenter="onHoverSentenceClass(27)" onmouseleave="onOutHoverSentenceClass(27)"> 
+                                             Indicate the form of bread crumbs. 
+                                             <button class="delete" id="butt-27"> </button>
+                                        </div> 
+                                        
+                                        <div class="notification is-success is-light" id="noti-28"  style="display: none;" onmouseenter="onHoverSentenceClass(28)" onmouseleave="onOutHoverSentenceClass(28)"> 
+                                             Indicate the form of bread cubes. 
+                                             <button class="delete" id="butt-28"> </button>
+                                        </div> 
+                                        
+                                        <div class="notification is-success is-light" id="noti-29" title= "If it makes no difference, it is not necessary to specify either."  style="display: none;" onmouseenter="onHoverSentenceClass(29)" onmouseleave="onOutHoverSentenceClass(29)"> 
+                                             Indicate the form of olives. 
+                                             <button class="delete" id="butt-29"> </button>
+                                        </div> 
+                                        
+                                        <div class="notification is-success is-light" id="noti-30" title= "If it makes no difference, it is not necessary to specify either."  style="display: none;" onmouseenter="onHoverSentenceClass(30)" onmouseleave="onOutHoverSentenceClass(30)"> 
+                                             Indicate whether cucumber is peeled or unpeeled if one is preferred. 
+                                             <button class="delete" id="butt-30"> </button>
+                                        </div> 
+                                        
+                                        <div class="notification is-success is-light" id="noti-31"  style="display: none;" onmouseenter="onHoverSentenceClass(31)" onmouseleave="onOutHoverSentenceClass(31)"> 
+                                             Indicate if grapes are green or red and seedless, if important to recipe results. 
+                                             <button class="delete" id="butt-31"> </button>
+                                        </div> 
+                                        
+                                        <div class="notification is-success is-light" id="noti-32"  style="display: none;" onmouseenter="onHoverSentenceClass(32)" onmouseleave="onOutHoverSentenceClass(32)"> 
+                                             Be sure to indicate whether the popcorn amount is popped or unpopped. 
+                                             <button class="delete" id="butt-32"> </button>
+                                        </div> 
+                                        
+                                            <span class="hint-3" id="hint-3"  style="display: none;">Tips on the Specificity of Steps</span>
+                                            
+                                        <div class="notification is-link is-light" id="noti-33"  style="display: none;" onmouseenter="onHoverSentenceClass(33)" onmouseleave="onOutHoverSentenceClass(33)"> 
+                                             Indicate the size of the saucepan or skillet. 
+                                             <button class="delete" id="butt-33"> </button>
+                                        </div> 
+                                        
+                                        <div class="notification is-link is-light" id="noti-34"  style="display: none;" onmouseenter="onHoverSentenceClass(34)" onmouseleave="onOutHoverSentenceClass(34)"> 
+                                             Indicate whether the cookware is covered or uncovered. 
+                                             <button class="delete" id="butt-34"> </button>
+                                        </div> 
+                                        
+                                        <div class="notification is-link is-light" id="noti-35"  style="display: none;" onmouseenter="onHoverSentenceClass(35)" onmouseleave="onOutHoverSentenceClass(35)"> 
+                                             Specify the intesity of cooking heat. 
+                                             <button class="delete" id="butt-35"> </button>
+                                        </div> 
+                                        
+                                        <div class="notification is-link is-light" id="noti-36" title= "This is especially useful when directions vary among different brands of a product."  style="display: none;" onmouseenter="onHoverSentenceClass(36)" onmouseleave="onOutHoverSentenceClass(36)"> 
+                                             When appropriate in the recipe method, say, “Prepare according to package directions.” 
+                                             <button class="delete" id="butt-36"> </button>
+                                        </div> 
+                                        
+                                        <div class="notification is-link is-light" id="noti-37"  style="display: none;" onmouseenter="onHoverSentenceClass(37)" onmouseleave="onOutHoverSentenceClass(37)"> 
+                                             Use “Salt” and “pepper” as nouns, not verbs. 
+                                             <button class="delete" id="butt-37"> </button>
+                                        </div> 
+                                        
+                                        <div class="notification is-link is-light" id="noti-38" title= "Wooden or bamboo skewers are frequently used in a microwave oven, whereas metal skewers are often preferred for grilling."  style="display: none;" onmouseenter="onHoverSentenceClass(38)" onmouseleave="onOutHoverSentenceClass(38)"> 
+                                             Indicate the material of the skewers. 
+                                             <button class="delete" id="butt-38"> </button>
+                                        </div> 
+                                        
+                                        <div class="notification is-link is-light" id="noti-39"  style="display: none;" onmouseenter="onHoverSentenceClass(39)" onmouseleave="onOutHoverSentenceClass(39)"> 
+                                             Specify the type of pan. 
+                                             <button class="delete" id="butt-39"> </button>
+                                        </div> 
+                                        
+                                        <div class="notification is-link is-light" id="noti-40" title= "You can often substitute the verb “beat” (“beat until smooth and creamy,” or “beat until light and fluffy”). Some readers think the verb is a noun and will look for cream in the ingredient list."  style="display: none;" onmouseenter="onHoverSentenceClass(40)" onmouseleave="onOutHoverSentenceClass(40)"> 
+                                             When possible, avoid using "cream" as a verb—it can be confused with the ingredient. 
+                                             <button class="delete" id="butt-40"> </button>
+                                        </div> 
+                                        
+                                        <div class="notification is-link is-light" id="noti-41"  style="display: none;" onmouseenter="onHoverSentenceClass(41)" onmouseleave="onOutHoverSentenceClass(41)"> 
+                                             Use stir, mix, or beat instead of "add" to be more specific. 
+                                             <button class="delete" id="butt-41"> </button>
+                                        </div> 
+                                        
+                                            <span class="hint-4" id="hint-4"  style="display: none;">Tips for Clarity of Steps</span>
+                                            
+                                        <div class="notification is-primary is-light" id="noti-42" title= "How can you convince the reader?"  style="display: none;" onmouseenter="onHoverSentenceClass(42)" onmouseleave="onOutHoverSentenceClass(42)"> 
+                                             Give the reasons for doing something. 
+                                             <button class="delete" id="butt-42"> </button>
+                                        </div> 
+                                        
+                                        <div class="notification is-primary is-light" id="noti-43" title= "How can your recipe be easier to reproduce?"  style="display: none;" onmouseenter="onHoverSentenceClass(43)" onmouseleave="onOutHoverSentenceClass(43)"> 
+                                             Describe how a mixture should look or feel at a certain stage. 
+                                             <button class="delete" id="butt-43"> </button>
+                                        </div> 
+                                        
+                                        <div class="notification is-primary is-light" id="noti-44" title= "How can your recipe be easier to reproduce?"  style="display: none;" onmouseenter="onHoverSentenceClass(44)" onmouseleave="onOutHoverSentenceClass(44)"> 
+                                             Describe until when to do the actions. 
+                                             <button class="delete" id="butt-44"> </button>
+                                        </div> 
+                                        
+
+                                   </div>
+                              </div>
+
+                              <div class="column" id="example-recipe-div" style="display: none;">
+
+                                   <div class="box" id='example-box'
+                                        style="background-color: rgba(235, 231, 231, 0.5) !important; height: 27.5rem !important;">
+                                        <div id="example_steps" class="class-example hwt-input hwt-content" rows="30"
+                                             cols="50"
+                                             style='background-color: transparent !important; overflow-y: scroll; height: 25.5rem;'>
+                                        </div>
+                                   </div>
+
+
+                              </div>
+                         </div>
+                    </div>
+
+
+
+
+                    <div id="modal-js-example" class="modal">
+                         <div class="modal-background"></div>
+                         <div class="modal-card">
+                              <header class="modal-card-head">
+                                   <p class="modal-card-title">Details</p>
+                                   <button class="delete" aria-label="close"></button>
+                              </header>
+                              <section class="modal-card-body">
+                                   <p>
+                                   <p> Using Artificial Intelligence, we compare your recipe to other (more than
+                                        200,000)
+                                        recipes written by a range of novice to experienced online users.
+                                        Based on our model, we select a slightly better recipe from our database.
+                                        We then show personalized feedback on how to improve the writing quality of your
+                                        recipe.
+                                        These suggestions are exemplified in the chosen recipe and were taken from "The
+                                        Recipe Writer's
+                                        Handbook" (Gibbs & Baker, 2001). </p>
+
+
+                                   </p>
+
+
+                              </section>
+                         </div>
+                    </div>
+
+
+
+                    <div id="modal-js-how-to" class="modal">
+                         <div class="modal-background"></div>
+                         <div class="modal-card">
+                              <header class="modal-card-head">
+                                   <p class="modal-card-title">Help</p>
+                                   <button class="delete" aria-label="close"></button>
+                              </header>
+                              <section class="modal-card-body">
+                                   <p>
+
+                                        <li>Write a cooking recipe on the Text Editor and click on the "Analyze" button
+                                             to receive help.</li>
+                                        <li>Afterward, click on the "Analyze" button to receive individualized help.
+                                        </li>
+                                        <li>In the Personal Dashboard, you will see some tips on how to improve your
+                                             recipe exemplified in a recipe from another user. </li>
+                                        <li>These suggestions were taken from "The Recipe Writer's Handbook" (Gibbs &
+                                             Baker, 2001). </li>
+                                        <li>Read the example recipe and the tips, then improve your text to include the
+                                             positive characteristics from the example recipe. </li>
+
+
+                                   </p>
+                              </section>
+                         </div>
+                    </div>
+
+
+                    <div id="modal-js-help" class="modal">
+                         <div class="modal-background"></div>
+                         <div class="modal-card">
+                              <header class="modal-card-head">
+                                   <p class="modal-card-title">How to use RELEX</p>
+                                   <button class="delete" aria-label="close"></button>
+                              </header>
+                              <section class="modal-card-body">
+                                   <p>
+
+                                        <li>First, write a cooking recipe in the Text Editor. Then, click
+                                             on the "Analyze" button to receive help. </li>
+                                        <li>In the Personal Dashboard, you will see a slightly better
+                                             recipe written by
+                                             another user and some tips on how to
+                                             improve your recipe exemplified in this example recipe.
+                                        </li>
+                                        <li>These suggestions were taken from "The Recipe Writer's
+                                             Handbook" (Gibbs & Baker, 2001). </li>
+                                        <li>Read the example recipe and improve your text to include the
+                                             positive characteristics from the example recipe. </li>
+                                        <li>You will also see two questions in the Reflection Space that will guide you
+                                             to reflect on your text and possible improvements. Please, answer them.
+                                        </li>
+
+                                        <li>You may analyze the recipe as many times as you want (each
+                                             time you will see a different recipe).</li>
+
+
+
+                                   </p>
+                              </section>
+                         </div>
+                    </div>
+
+               </div>
+
+               <div class="columns" style="padding-left: 15% !important; padding-right: 15% !important;">
+                    <div class="column is-centered">
+
+                    </div>
+                    <div class="column is-centered">
+
+                    </div>
+               </div>
+
+
+
+          </div>
+     </section>
+
+
+
+
+</body>
+
+</html>

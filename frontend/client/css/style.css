@@ -1,0 +1,201 @@
+@import url("https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css");
+
+/* From https://pqina.nl/blog/fade-out-overflow-using-css-mask-image/ */
+
+.masked-overflow {
+    /* scroll bar width, for use in mask calculations */
+    --scrollbar-width: 8px;
+
+    /* mask fade distance, for use in mask calculations */
+    --mask-height: 32px;
+
+    /* If content exceeds height of container, overflow! */
+    overflow-y: auto;
+
+    /* Our height limit */
+    height: 300px;
+
+    /* Need to make sure container has bottom space,
+  otherwise content at the bottom is always faded out */
+    padding-bottom: var(--mask-height);
+
+    /* Keep some space between content and scrollbar */
+    padding-right: 20px;
+
+    /* The CSS mask */
+
+    /* The content mask is a linear gradient from top to bottom */
+    --mask-image-content: linear-gradient(
+        to bottom,
+        transparent,
+        black var(--mask-height),
+        black calc(100% - var(--mask-height)),
+        transparent
+    );
+
+    /* Here we scale the content gradient to the width of the container 
+  minus the scrollbar width. The height is the full container height */
+    --mask-size-content: calc(100% - var(--scrollbar-width)) 100%;
+
+    /* The scrollbar mask is a black pixel */
+    --mask-image-scrollbar: linear-gradient(black, black);
+
+    /* The width of our black pixel is the width of the scrollbar.
+  The height is the full container height */
+    --mask-size-scrollbar: var(--scrollbar-width) 100%;
+
+    /* Apply the mask image and mask size variables */
+    mask-image: var(--mask-image-content), var(--mask-image-scrollbar);
+    mask-size: var(--mask-size-content), var(--mask-size-scrollbar);
+
+    /* Position the content gradient in the top left, and the 
+  scroll gradient in the top right */
+    mask-position: 0 0, 100% 0;
+
+    /* We don't repeat our mask images */
+    mask-repeat: no-repeat, no-repeat;
+
+    scrollbar-width: thin; /* can also be normal, or none, to not render scrollbar */
+    scrollbar-color: currentColor transparent; /* foreground background */
+}
+
+.masked-overflow::-webkit-scrollbar {
+    width: var(--scrollbar-width);
+}
+
+.masked-overflow::-webkit-scrollbar-thumb {
+    background-color: currentColor;
+    border-radius: 9999px; /* always round */
+}
+
+.masked-overflow::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+.tool-description {
+    font-size: 0.87rem;
+}
+
+#save-button {
+    margin-top: -5%;
+}
+
+.whole-section {
+    padding: 2% !important;
+}
+
+.suggested {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #fdfdfd;
+    padding: 5px;
+    z-index: 100;
+    display: none;
+    box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);
+}
+
+.main-container {
+    margin-top: -5% !important;
+}
+
+.help-icon {
+    padding: 0px !important;
+    background: none;
+    cursor: pointer;
+    outline: inherit;
+    font: inherit;
+    padding: 0;
+    font-size: 60px !important;
+    color: rgb(48, 48, 234, 0.6);
+}
+
+.no-border {
+    border: none !important;
+}
+
+#explain-button {
+    padding: 0px !important;
+    background: none;
+	color: blue;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+#top-dialog-container {
+    height: 0px;
+    opacity: 0%;
+    margin: -8px;
+    margin-bottom: 45px;
+    transition: all 0.5s;
+}
+
+#top-dialog {
+    background-color: beige;
+}
+
+.top-dialog-shown {
+    height: 450px !important;
+    opacity: 100% !important;
+    padding: 2%;
+}
+
+/* Code from https://loading.io/css/ with a bit of changes */
+
+.lds-ring {
+    display: inline-block;
+    position: relative;
+    width: 50px;
+    height: 50px;
+  }
+  .lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    margin: 8px;
+    border: 8px solid #fff;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #fff transparent transparent transparent;
+  }
+  .lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+  }
+  .lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+  }
+  .lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
+  }
+  @keyframes lds-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+.scrollable-element {
+    scrollbar-color: while rgb(203, 203, 231);
+  }
+
+.loading-indicator {
+    transform: translateX(-50%);
+}
+
+
+
+.dashboard {
+    border: 1px solid #ccc;
+    margin-left: 30px;
+    margin-top: 65px;
+}
+
+
+

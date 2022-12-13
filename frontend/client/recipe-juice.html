@@ -1,0 +1,313 @@
+<!-- No annotations -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Procedural Writing</title>
+     <link rel="stylesheet" href="./css/style.css">
+     <link rel="stylesheet" href="./css/font-awesome-4.7.0/css/font-awesome.min.css">
+     <script src="./js/jquery-aux.js"></script>
+
+     <!-- highlight-within-textarea CSS/JS -->
+     <link href="./css/jquery.highlight-within-textarea.css" rel="stylesheet">
+     <link href="./css/spin.css" rel="stylesheet">
+     <link href="./css/buttonLoader.css" rel="stylesheet">
+     <script src="./js/jquery.highlight-within-textarea.js"></script>
+     <script src="./js/jquery.buttonLoader.js"></script>
+     <!-- <script src="./js/spin.js" type="module"></script> -->
+
+     <script src="./js/server.js"></script>
+     <script src="./js/modal.js"></script>
+     <script src="./js/log.js"></script>
+     <script src="./js/recipes3.js"></script>
+
+
+</head>
+
+<body>
+
+
+
+     <section class="section is-small whole-section">
+          <div class="container">
+               <div class="columns">
+
+                    <div class="column is-three-quarters" style="margin-bottom: 75px !important;">
+                         <h1 class="title">RELEX - Recipe Learning through Examples</h1>
+                         <h2 class="subtitle">
+                              A simple tool to help you improve your recipe writing skills.
+
+                    </div>
+                    <div class="column is-one-quarter">
+                         <div style="display: flex; flex-direction: row; width: 100%; justify-content: flex-end; align-items: center; align-self: center; align-content: center;">
+                              <button class="js-modal-trigger button no-border"  data-target="modal-js-help">
+                                   <span class="icon is-small">
+                                        <i class="fa fa-question-circle help-icon"></i>
+                                   </span>
+                              </button>
+                         </div>
+                    </div>
+
+               </div>
+          </div>
+
+
+
+               <div class="container main-container">
+
+                    <div class="columns">
+
+                         <div class="column is-centered text-area-column">
+                              <div id="top-dialog-container">
+                                   <br />
+                                   <br />
+                                   <div id="top-dialog">
+                                        <div id='questions-div'>
+                                             <br />
+                                             <h2 style="text-align: center; font-size: 150%; font-weight: bold;">
+                                                  Self-Reflection </h2>
+                                             <h3 style="text-align: center;">First, please self-reflect on your recipe by
+                                                  answering the following questions.</h3>
+                                             <br />
+                                             <div class="columns  is-centered">
+                                                  <h2 class="question-caption">
+                                                       <p style="padding: 5px 35px; text-align: center;"> <b>1) On the right,
+                                                                 you see an example recipe. What aspects of the example
+                                                                 recipe do
+                                                                 you find interesting, useful,
+                                                                 convincing, and which not?</b>
+                                                       </p>
+                                                  </h2>
+                                                  <p></p>
+                                             </div>
+                                             <div class="columns is-centered" style="padding: 5px 35px;">
+                                                  <textarea class="textarea is-hovered" rows="2" cols="46"
+                                                       id="q1"> </textarea>
+                                             </div>
+
+                                             <div class="columns  is-centered">
+                                                  <br>
+                                                  <h2 class="question-caption">
+                                                       <p style="padding: 5px 35px; text-align: center;"> <b> 2) What
+                                                                 deficiencies does your recipe have
+                                                                 compared to the example
+                                                                 recipe on the right?</b> </p>
+                                                  </h2>
+
+                                             </div>
+                                             <div class="columns is-centered" style="padding: 5px 35px;">
+                                                  <textarea class="textarea is-hovered" rows="2" cols="46"
+                                                       id="q2"> </textarea>
+                                             </div>
+                                        </div>
+
+                                        <div class="column is-centered" style="text-align: center; margin-top: 45px;">
+                                             <button class="button is-medium is-link" id="save-button">Save</button>
+                                        </div>
+                                   </div>
+                                   <br />
+                              </div>
+
+                              <br />
+
+                              <h2 style="text-align: center; font-size: 150%; font-weight: bold;">Text Editor </h2>
+                              <h3 style="text-align: center;"> Write your recipe here, click the "Analyze" button
+                              to recieve personalized tips shown in an example recipe. </h3>
+
+                              <br />
+
+
+                              <div class="box" style="height: 80% !important; max-height: 450px !important;">
+                                   <div contenteditable="true" id="recipe" class="class-example hwt-input hwt-content"
+                                        rows="37" cols="50"
+                                        style='overflow-y: scroll; height: 100% !important; max-height: 450px !important; padding: 4px 4px;; '>
+                                   </div>
+                              </div>
+
+                              <div style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
+                                   <button class="button is-medium is-link" id="submit-button">
+                                        Analyze
+                                   </button>
+                                   
+                              </div>
+                              <br />
+                              <div style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
+                                   <button class="js-modal-trigger button is-light is-link" id="help-button" data-target="modal-js-help">
+                                        Help
+                                   </button>
+                              </div>
+                              <br /><br />
+
+                              <!-- <div class="columns is-centered">
+                                   <div class="column is-half" style="text-align: center;">
+                                        <button class="button is-medium is-link" id="submit-button">
+                                             Next
+                                   </div>
+                              </div> -->
+
+                         </div>
+
+
+
+
+
+                         <div class="column dashboard">
+                              <h2 style="text-align: center; font-size: 150%; font-weight: bold">Personal Dashboard
+                              </h2>
+
+                                   
+                              <h3 style="text-align: center;">This dashboard shows a recipe chosen based on your text, exemplifying 
+                                   some improvements you can make. <button class="js-modal-trigger" id="explain-button"
+                              style="display: none;" data-target="modal-js-example">Details</button></h3>
+
+                              <br />
+
+                              <div class="columns">
+                                   <div class="column masked-overflow" style="overflow-y: scroll !important; height: 27.5rem !important;  
+          overflow: overlay; scrollbar-color: while rgb(210, 210, 245);">
+                                        <div class="column">
+
+
+                                           
+                                          
+                                        </div>
+                                   </div>
+
+                                   <div class="column" id="example-recipe-div" style="display: none;">
+
+                                        <div class="box" id='example-box'
+                                             style="background-color: rgba(235, 231, 231, 0.5) !important; height: 27.5rem !important;">
+                                             <div id="example_steps" class="class-example hwt-input hwt-content"
+                                                  rows="30" cols="50"
+                                                  style='background-color: transparent !important; overflow-y: scroll; height: 25.5rem;'>
+                                             </div>
+                                        </div>
+
+                                        <!-- <div id='questions-div'>
+
+                                             <div class="columns  is-centered">
+                                                  <h2 class="question-caption">
+                                                       <p style="padding: 5px 35px;">Which aspects of the example recipe do
+                                                            you find interesting, useful,
+                                                            convincing, and which not?
+                                                       </p>
+                                                  </h2>
+                                                  <p></p>
+                                             </div>
+                                             <div class="columns is-centered" style="padding: 5px 35px;">
+                                                  <textarea class="textarea is-hovered" rows="2" cols="46"
+                                                       id="q1"> </textarea>
+                                             </div>
+
+                                             <div class="columns  is-centered">
+                                                  <br>
+                                                  <h2 class="question-caption">
+                                                       <p style="padding: 5px 35px;"> What deficiencies does your recipe have
+                                                            compared to the example
+                                                            recipe?</p>
+                                                  </h2>
+
+                                             </div>
+                                             <div class="columns is-centered" style="padding: 5px 35px;">
+                                                  <textarea class="textarea is-hovered" rows="2" cols="46"
+                                                       id="q2"> </textarea>
+                                             </div>
+                                        </div>
+
+                                        <div class="column is-centered" style="text-align: center; margin-top: 35px;">
+                                             <button class="button is-medium is-link" id="save-button">Save and
+                                                  Reset</button>
+                                        </div> -->
+                                   </div>
+                              </div>
+                         </div>
+
+
+
+
+                         <div id="modal-js-example" class="modal">
+                              <div class="modal-background"></div>
+                              <div class="modal-card">
+                                   <header class="modal-card-head">
+                                        <p class="modal-card-title">Details</p>
+                                        <button class="delete" aria-label="close"></button>
+                                   </header>
+                                   <section class="modal-card-body">
+                                        <p>
+                                        <p> In the dashboard, you are seeing a recipe from another user. This recipe
+                                             was chosen based on your
+                                             recipe. </p>
+                                        <p> On the right, there are two reflection questions, please answer them.</p>
+                                        <p> Some parts of the text are highlighted. There are text boxes
+                                             describing positive characteristics of the example recipe.
+                                             These characteristics were taken from "The Recipe Writer's Handbook" (Gibbs
+                                             & Baker, 2001).</p>
+                                        <li>Some descriptions might be relevant and accurate while others might not, you
+                                             may close the ones
+                                             that are not
+                                             relevant.</li>
+                                        <li>After reading the example recipe and answering the questions, you may
+                                             improve your recipe
+                                             accordingly. </li>
+
+                                        </p>
+
+
+                                   </section>
+                              </div>
+                         </div>
+
+
+                    
+                         <div id="modal-js-help" class="modal">
+                              <div class="modal-background"></div>
+                              <div class="modal-card">
+                                   <header class="modal-card-head">
+                                        <p class="modal-card-title">Help</p>
+                                        <button class="delete" aria-label="close"></button>
+                                   </header>
+                                   <section class="modal-card-body">
+                                        <p>
+                                             <li> Write a cooking recipe on the text area.</li>
+                                             <li>When you have finished, click on Analyze to see elements on the dasboard.</li>
+                                        <p> You may edit your recipe and Analyze as many times as desired. </p>
+                                        
+
+                                        </p>
+
+
+                                   </section>
+                              </div>
+                         </div>
+
+                    </div>
+
+                    <div class="columns" style="padding-left: 15% !important; padding-right: 15% !important;">
+                         <div class="column is-centered">
+                              <!-- <div class="column is-half" style="text-align: center;">
+                                   <button class="button is-medium is-link" id="submit-button">
+                                        Analyze
+                              </div> -->
+                         </div>
+                         <div class="column is-centered">
+                              <!-- <div class="column is-half" style="text-align: center;">
+                                   <button class="button is-medium is-link" id="submit-button">
+                                        Next
+                              </div> -->
+                         </div>
+                    </div>
+
+
+
+               </div>
+     </section>
+
+
+
+
+</body>
+
+</html>
