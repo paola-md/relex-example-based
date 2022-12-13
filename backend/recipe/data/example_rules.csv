@@ -1,0 +1,46 @@
+component,text,explanation,first,second,exception,error,color,missing
+ingredients,Write the ingredients and the steps in separate sections.,Which headings and subheadings enable you to arrange the recipe in a logical order?,,,,,1,0
+ingredients,List each ingredient separately.,How can you best structure the recipe in a meaningful way?,,,,,1,0
+steps,Enumerate the steps.,How can you best structure the recipe in a meaningful way?,,,,,1,0
+ingredients,"Indicate whether the meat, poultry, or seafood is boned, skinned, or otherwise prepared.",How can your recipe be more specific? ,chicken | pork | lamb | fish |  beef,bonned?|boneless|skinned?|prepared|cubed|chopped|sliced|cut|shredded|sliced|skinless|lean|halved|halve|tenderloin|skin|shanks,stock| bouillon| soup| leg|ground beef|sauce|gravy|broth|sausage|flavor|flavour|consomme,,2,1
+ingredients,"Indicate whether the fat is firm, softened, or melted.",How can your recipe be more specific? , butter | margarine | butter or margarine,firm|softened|melted,peanut| lettuce|crackers|clarified,,2,1
+ingredients,Indicate whether the butter is salted or unsalted.,How can your recipe be more specific? , butter | butter ,salted|unsalted,peanut| lettuce|crackers,,2,1
+ingredients,Indicate the kind of yeast.,,yeast,compressed?|dry|active|active dry?|quick-rising|quick|instant|rising,,,2,1
+ingredients,"For canned foods, indicate drained or undrained, and whether to reserve the liquid or not.",,canned,drained|undrained|rinsed,,,2,1
+ingredients,"Indicate whether the cottage cheese has small curd, large curd, is creamed, or dry, if important to recipe results.",,cottage cheese,creamed|dry|small curd|large curd|curd|cream,,,2,1
+ingredients,"Indicated whether cheese should be shredded, crumbled, cubed or other form.",,cheese ,shredded|crumbled|cubed|grated|cubes|sliced|diced|slice,cream cheese| Philadelphia|soup|cake|dressing|topping|macaroni,,2,1
+ingredients,"For cherries and berries, indicate the form fresh, frozen, canned, dried, or candied.",This is important when the use of a specific one is preferred ,cherries| strawberries|raspberries|blueberries|blackberries|red currants|white currants|blackcurrants|berries|cranberries,fresh|frozen|canned|dried|candied,,,2,1
+ingredients,"For almonds, indicate “blanched” or “unblanched” when the use of only one is preferred.",This is important when the use of a specific one is preferred ,almonds,blanched|unblanched|slivered|blanch,,,2,1
+ingredients,"For anise, specify the form.",,anise ,extract|oil|seed|star|stars,liqueur|flavouring|licor|tea|vodka,,2,1
+ingredients,"For bouillon, specify the form.",,bouillon | stock ,cube?|granule?|powder|instant|paste|cup|can,,,2,1
+ingredients,"For caramels, indicate the flavor rather than the color.",This is important when the use of a specific one is preferred ,caramels,vanilla|chocolate|fudge,,,2,1
+ingredients,"For cardamom, specify the form.",,cardamom,ground|powder|seeds|whole| pod| pods,,,2,1
+ingredients,"For cinnamon, specify the form.",,cinnamon,ground|powder|oil|stick,rolls|sugar,,2,1
+ingredients,Indicate the form of clams.,,clams,fresh|canned|can|cans|in shell,,,2,1
+ingredients,Indicate the form of nuts.,,pecan| peanut| almond| walnut| cashew|  pecans| peanuts| almonds | walnuts | cashews | nuts,complete|whole|halves|halved|pieces|chopped|salted|unsalted|roasted|unroasted|toasted|shelled|unshelled|crushed,oil|extract|vinegar|butter,,2,1
+ingredients,"Specify the form of peels, freshly grated, dried grated, cut in spirals, strips, or other form",,orange peel|lemon peel,grated|freshly grated|dried grated|cut in spirals|strip|shredded|zest,,,2,1
+ingredients,Indicate the type of pepper.,, pepper | pepper ,black|white|cayenne,hot|red|chili|cheese|cola|green|yellow|soda,,2,1
+ingredients,Indicate the type of pineapple (fresh or canned).,"If it makes no difference, it is not necessary to specify.",pineapple,fresh|canned|can| cans|frozen,juice|syrup,,2,1
+ingredients,Indicate the type of raisins.,"If it makes no difference, it is not necessary to specify.",raisins,dark|golden|any kind,,,2,1
+ingredients,Indicate whether canned tuna is packed in oil or water.,"If it makes no difference, it is not necessary to specify.", canned tuna|tuna can|can of tuna|cans of tuna,oil|water|drained,,,2,1
+ingredients,Specify the vanilla form.,,vanilla,extract|flavoring|bean|essence|syrup,ice cream|wafers|frosting|yogurt|pudding|cake|vodka ,,2,1
+ingredients,Indicate the type of vinegar.,,vinegar,cider|distilled white|white wine|red wine|balsamic|flavored|rice|white|raspberry|wine,,,2,1
+ingredients,Specify the type of yogurt.,,yogurt,plain|unflavored|flavored|low-fat|nonfat|vanilla|lemon|greek|strawberry|peach|apricot|cherry|natural|blueberry|raspberry|any flavour|any flavor|apple|coffee|cinnamon|fruit,ice cream,,2,1
+ingredients,Indicate the form of bread crumbs.,,bread crumbs|bread-crumbs,dry|soft|fresh|seasoned|whole wheat|panko,,,2,1
+ingredients,Indicate the form of bread cubes.,,bread cubes|bread-cubes,dry|soft|fresh|seasoned|toasted,,,2,1
+ingredients,Indicate the form of olives.,"If it makes no difference, it is not necessary to specify.",olives,pitted|unpitted,,,2,1
+ingredients,Indicate whether cucumber is peeled or unpeeled if one is preferred.,"If it makes no difference, it is not necessary to specify.",cucumber,peeled|unpeeled|peel| unpeel ,,,2,1
+ingredients,"Indicate if grapes are green or red and seedless, if important to recipe results.",,grapes,green|red|seedless|seed,grapeseed|oil,,2,1
+ingredients,Be sure to indicate whether the popcorn amount is popped or unpopped.,,popcorn,popped|unpopped|uncooked|kernels,,,2,1
+steps,Indicate the size of the saucepan or skillet.,,saucepan | pot | pan | skillet ,small saucepan | small-saucepan| medium saucepan | medium-saucepan| large saucepan | large-saucepan| small skillet | small-skillet| medium skillet | medium-skillet| large skillet | large-skillet| small pan | small-pan| medium pan | medium-pan| large pan | large-pan| small pot | small-pot| medium pot | medium-pot| large pot | large-pot,,,3,1
+steps,Indicate whether the cookware is covered or uncovered.,,saucepan | pot | pan | skillet ,covered | uncovered | cover? | uncover?,,,3,1
+steps,Specify the intesity of cooking heat.,, heat , low| medium| high|medium-high|medium-low| med-high | med  ,preheat|pre-heat|remove|reduce|off,,3,1
+steps,"When appropriate in the recipe method, say, “Prepare according to package directions.”",This is especially useful when directions vary among different brands of a product.,cook pasta | cook rice | cook the pasta | cook the rice | cook noodles | prepare pasta | prepare rice ,according to package directions|package directions|package instructions|directions on package|instructions on package|as directed on package|package directs|directions on box|box directions|as directed on,,,3,1
+steps,"Use “Salt” and “pepper” as nouns, not verbs.",,salt and pepper,season|sprinkle,mix |stir |add|whisk|sift|combine|red|yellow|green|salted|water|salt the|salt and pepper the|salt and pepper to taste|salt to preference|to taste|preference|beat|crush|toss|blend|marinate|with|cook,salt the|salt and pepper the|salt and pepper to taste,3,1
+steps,Indicate the material of the skewers. ,"Wooden or bamboo skewers are frequently used in a microwave oven, whereas metal skewers are often preferred for grilling.",skewers,wooden | bamboo | metal,,,3,1
+steps,Specify the type of pan.,, pan | skillet | frying pan,nonstick pan | nonstick-pan| ceramic pan | ceramic-pan| stainless steel pan | stainless steel-pan| cast-iron pan | cast-iron-pan| nonstick skillet | nonstick-skillet| ceramic skillet | ceramic-skillet| stainless steel skillet | stainless steel-skillet| cast-iron skillet | cast-iron-skillet| nonstick frying pan | nonstick-frying pan| ceramic frying pan | ceramic-frying pan| stainless steel frying pan | stainless steel-frying pan| cast-iron frying pan | cast-iron-frying pan,,,3,1
+steps,"When possible, avoid using ""cream"" as a verb—it can be confused with the ingredient. ","You can often substitute the verb “beat” (“beat until smooth and creamy,” or “beat until light and fluffy”). Some readers think the verb is a noun and will look for cream in the ingredient list.",beat the butter | beat until smooth | beat until creamy | beat until light | beat until fluffy,,,cream the|cream butter,3,1
+steps,"Use stir, mix, or beat instead of ""add"" to be more specific.",, stir | beat | mix | incorporate | whisk,,, add ,3,1
+steps,Give the reasons for doing something.,How can you convince the reader?,to prevent|to remove| in order to | so that|in order that,,,,4,0
+steps,Describe how a mixture should look or feel at a certain stage.,How can your recipe be easier to reproduce?,will be|will look|will feel|should look|should be|should feel|must be|must feel|must look,,,,4,0
+steps,Describe until when to do the actions.,How can your recipe be easier to reproduce?, until ,,,,4,0
