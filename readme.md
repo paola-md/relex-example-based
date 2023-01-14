@@ -1,6 +1,5 @@
 # RELEX
-This repository is the official implementation of the CHI 2023 Paper entitled ["RELEX: Scaling Example-Based Learning via Natural Language Processing"]
-
+This repository is the official implementation of RELEX.
 
 # Usage guide
 
