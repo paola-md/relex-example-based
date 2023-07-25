@@ -1,6 +1,9 @@
 # RELEX
 This repository is the official implementation of RELEX.
 
+RELEXSet is available [here](https://drive.google.com/drive/folders/1ZUOvPxJaGpUjU5QsRlxqVq_pGipgTMlN?usp=sharing).
+
+
 # Usage guide
 
 ## A. Run Locally
@@ -43,7 +46,7 @@ database_name = "relex"
 hostname = "localhost"
 ```
 
-3. Download the examples dataset from [here](https://drive.google.com/file/d/1_1h5MZiZvpQtWchAYC7C2eBEfgxsXyqc/view?usp=sharing) and place in database/data/
+3. Download the test dataset from [here](https://drive.google.com/file/d/1_1h5MZiZvpQtWchAYC7C2eBEfgxsXyqc/view?usp=sharing) and place in database/data/
 
 4. Run the script start_database.py to create the schemas and tables for the metadata and to load the examples.
 ```
