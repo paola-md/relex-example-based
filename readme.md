@@ -1,6 +1,7 @@
 # RELEX
 This repository is the official implementation of RELEX.
 
+RELEX is available [here](https://go.epfl.ch/relex).
 RELEXSet is available [here](https://drive.google.com/drive/folders/1ZUOvPxJaGpUjU5QsRlxqVq_pGipgTMlN?usp=sharing).
 
 
