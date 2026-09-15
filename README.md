@@ -63,6 +63,6 @@ The recipe examples (RELEXSet) are shared separately on the Drive folder above; 
 
 ## Licence and status
 
-No licence file. The repository is private.
+No licence file.
 
 Not maintained: kept as the record of the paper.
