@@ -1,24 +1,23 @@
-import pandas as pd
 sys.path.append('../')
 from backend.recipe.globals import df
 
 colors_dict = {1: {'noti': 'is-warning', 'color_text': "hsl(48, 100%, 57%)" , 'darktext': "#947600" },
-    3:  {'noti': 'is-link', 'color_text':'hsl(217, 51%, 73%)' , 'darktext': '#2160c4'},  
-    2: {'noti': 'is-success', 'color_text':'hsl(141, 71%, 68%)' , 'darktext': '#257942'},  
+    3:  {'noti': 'is-link', 'color_text':'hsl(217, 51%, 73%)' , 'darktext': '#2160c4'},
+    2: {'noti': 'is-success', 'color_text':'hsl(141, 71%, 68%)' , 'darktext': '#257942'},
     4: {'noti': 'is-primary', 'color_text':'hsl(171, 80%, 61%)' , 'darktext': '#00947e'}
     }
 
 def generate_css(df):
     complete_txt = ""
-        
+
     for index, row in df.iterrows():
         rule_num = int(row['#'])
         txt = row['text']
         color = row['color']
-    
+
         colortext = colors_dict[color]['color_text']
         darktext = colors_dict[color]['darktext']
-        
+
 
         next_txt = f"""
         .sentence-class-{rule_num} {{
@@ -36,7 +35,7 @@ def generate_css(df):
         }}
         """
         complete_txt = complete_txt + next_txt
-    
+
     for i in colors_dict.keys():
         next_txt = f"""
         .hint-{i} {{
@@ -52,9 +51,9 @@ def generate_css(df):
         }}
         """
         complete_txt = complete_txt + next_txt
-    
+
     return complete_txt
-    
+
 
 css = generate_css(df)
 print(css)

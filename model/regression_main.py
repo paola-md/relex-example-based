@@ -1,21 +1,13 @@
-from sklearn.model_selection import train_test_split
 import pandas as pd
 import numpy as np
-import random
-import os
-import torch
 import json
-import itertools as iter
 
 from transformers import AutoTokenizer, \
                           AutoModelForSequenceClassification, \
                           TrainingArguments, \
                           Trainer, \
-                          EarlyStoppingCallback, \
-                          IntervalStrategy
+                          EarlyStoppingCallback
 
-from datasets.dataset_dict import DatasetDict
-from datasets import Dataset, load_metric
 from sklearn.metrics import mean_squared_error, mean_absolute_error
 
 from finetuning_regression import *
@@ -48,23 +40,23 @@ def train_model(model_name):
 
     ## ==== TRAINING ====
     # 4. Load model
-    TOKENIZER =  "distilroberta-base" 
-    tokenizer = AutoTokenizer.from_pretrained(TOKENIZER) 
+    TOKENIZER =  "distilroberta-base"
+    tokenizer = AutoTokenizer.from_pretrained(TOKENIZER)
 
     # 4.1 Parameters
     learning_rate = 2e-05
     weight_decay = 0.02
     batch_size = 256
- 
+
     MODEL_NAME = f"anonymized/mlm_{model_name}"
-    model = AutoModelForSequenceClassification.from_pretrained(MODEL_NAME , 
+    model = AutoModelForSequenceClassification.from_pretrained(MODEL_NAME ,
                                                             vocab_size=tokenizer.vocab_size,
                                                             ignore_mismatched_sizes=True,
-                                                            num_labels=1, 
+                                                            num_labels=1,
                                                             problem_type='regression')
 
 
-    
+
     # 5. Training arguments
     args = TrainingArguments(
         model_name,
@@ -118,7 +110,7 @@ def train_model(model_name):
         json.dump(predictions.metrics, f)
 
     print(predictions)
-    
+
     # Baseline
     labels_test = small_test_dataset['label']
     mean_train = np.mean(small_train_dataset['label'])
@@ -128,7 +120,7 @@ def train_model(model_name):
     baselines = {'mse': mean_squared_error(mean_train_list, labels_test),
                 'mae': mean_absolute_error(mean_train_list, labels_test),
                 'mean': mean_train
-    
+
     }
     with open(f"{RESULTS_DIR}baseline-{model_name}.json", 'w') as f:
         json.dump(baselines, f)

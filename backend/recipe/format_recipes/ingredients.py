@@ -1,7 +1,6 @@
 from .utils import check_regex_rules, create_list_rules
 import ast
-import pandas as pd
-from ..globals import DIR_RULES, df
+from ..globals import df
 
 
 
@@ -15,24 +14,24 @@ def format_ingredients(ingredients, mask):
     df_ingredients = df[(df['component']=='ingredients') & (~df['first'].isna()) & (df['#'].isin(mask))]
     ingredients_rules_list = create_list_rules(df_ingredients)
 
-    current = {"sentence": "\n Ingredients:", 
+    current = {"sentence": "\n Ingredients:",
                "class": int(mask[0]), "color": 1}
-    ingredients_recipe.append(current) 
+    ingredients_recipe.append(current)
 
     for ingredient in ingredients_list:
 
-        current = {"sentence": "\n - ", 
+        current = {"sentence": "\n - ",
                     "class": int(mask[1]),"color": 1}
         ingredients_recipe.append(current)
-        
+
         new_id, new_ingredient = check_regex_rules(ingredient, ingredients_rules_list)
 
         ingredients_recipe = ingredients_recipe + new_ingredient
         ids_ingredients = ids_ingredients + new_id
-    
-    current = {"sentence": "\n \n", 
+
+    current = {"sentence": "\n \n",
                "class": -1, "color": 1}
-    ingredients_recipe.append(current)       
+    ingredients_recipe.append(current)
     return ids_ingredients, ingredients_recipe
 
 
@@ -45,16 +44,16 @@ def format_steps(steps,  mask):
     steps_rules_list = create_list_rules(df_steps)
 
 
-    current = {"sentence": "\n \n \n \n Steps: \n", 
+    current = {"sentence": "\n \n \n \n Steps: \n",
                "class": int(mask[0]), "color": 1}
-    steps_recipe.append(current) 
+    steps_recipe.append(current)
 
     i = 1
     for step in steps_list:
 
-        current = {"sentence": f" \n {i}. ", 
+        current = {"sentence": f" \n {i}. ",
                     "class": int(mask[2]), "color": 1}
-        steps_recipe.append(current) 
+        steps_recipe.append(current)
 
         new_id, new_step = check_regex_rules(step, steps_rules_list)
 

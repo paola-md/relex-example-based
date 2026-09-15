@@ -4,8 +4,6 @@ Useful functions for postgres database
 import psycopg2
 #import psycopg2.extras
 import pandas as pd
-import os
-import numpy as np
 import numpy
 from datetime import datetime
 
@@ -25,7 +23,7 @@ database_name = "relex"
 hostname = "localhost"
 DATABASE_URL = f"postgres://{user}:{password}@{hostname}:{port}/{database_name}"
 
-# For heroku 
+# For heroku
 #DATABASE_URL = os.environ['HEROKU_POSTGRESQL_TEAL_URL']
 
 def get_connection():

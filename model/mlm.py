@@ -1,8 +1,4 @@
-import io
-import os
-import math
 import torch
-import warnings
 
 from transformers import (AutoTokenizer,
                           AutoModelForMaskedLM,
@@ -50,7 +46,7 @@ def finetune(X, y, model_name, EPOCHS = 2,FIELD = 'is', RESULTS_DIR = './results
     tokenizer = AutoTokenizer.from_pretrained("distilroberta-base")
 
     MODEL_NAME = "distilroberta-base"
-    model = AutoModelForMaskedLM.from_pretrained(MODEL_NAME , 
+    model = AutoModelForMaskedLM.from_pretrained(MODEL_NAME ,
                                                 vocab_size=tokenizer.vocab_size,
                                                 ignore_mismatched_sizes=True)
 
@@ -179,8 +175,8 @@ def run_mlm(model_name):
     X = df[['text']]
     y = df[['evaluation']]
 
-    finetune(X, y, 
+    finetune(X, y,
     model_name = model_name,
     EPOCHS = 2,FIELD = 'text', RESULTS_DIR = './results/',
-    SAVE_MODEL = True, 
+    SAVE_MODEL = True,
     model_checkpoint = "distilroberta-base")

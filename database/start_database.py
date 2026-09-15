@@ -23,7 +23,7 @@ def create_tables():
         ingredients text,
         steps text
     );
-    """ 
+    """
     execute_query(query)
     print("Recipe table created")
 
@@ -34,7 +34,7 @@ def create_tables():
         event_type text,
         details jsonb
     );
-    """ 
+    """
     execute_query(query)
     print("User events table created")
 
@@ -48,7 +48,7 @@ def create_tables():
         user_recipe text,
         show_mask text
     );
-    """ 
+    """
     execute_query(query)
     print("Recipe seen table created")
 

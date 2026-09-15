@@ -1,8 +1,6 @@
-from fastapi import Depends, FastAPI, HTTPException, status
+from fastapi import Depends, HTTPException
 from pydantic import BaseModel
-from typing import List, Union
-from .postgres_utils import get_select
-from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
+from fastapi.security import OAuth2PasswordBearer
 
 
 

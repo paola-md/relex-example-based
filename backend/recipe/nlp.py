@@ -8,17 +8,17 @@ from .postgres_utils import  get_select
 # Load models at the start and stores them as global variables
 print("Loading models")
 TOKENIZER = "annonymized for submission"
-tokenizer = AutoTokenizer.from_pretrained(TOKENIZER) 
+tokenizer = AutoTokenizer.from_pretrained(TOKENIZER)
 vocab = tokenizer.vocab_size
 start = time.time()
 
 MODEL_NAME = "annonymized for submission"
-model = AutoModelForSequenceClassification.from_pretrained(MODEL_NAME , 
+model = AutoModelForSequenceClassification.from_pretrained(MODEL_NAME ,
                                                         vocab_size=vocab,
                                                         ignore_mismatched_sizes=True,
-                                                        num_labels=1, 
+                                                        num_labels=1,
                                                         problem_type='regression')
-pipe = TextClassificationPipeline(model=model, tokenizer=tokenizer, return_all_scores=True) 
+pipe = TextClassificationPipeline(model=model, tokenizer=tokenizer, return_all_scores=True)
 end = time.time()
 print("Loading time: {}".format(end - start))
 
@@ -45,7 +45,7 @@ def select_range(res):
 
     lower_bound = res + one_std*1
     upper_bound = res + one_std*1.5
-    
+
     query = f"""
     select * from backend.recipes
     where gauss_mean >= {lower_bound}
@@ -54,7 +54,7 @@ def select_range(res):
 
     df = get_select(query)
     print(f"Found options {len(df)}")
-    return df    
+    return df
 
 
 def get_models_options(recipe):

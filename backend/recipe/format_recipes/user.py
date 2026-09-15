@@ -1,7 +1,7 @@
 import re
 import pandas as pd
 import numpy as np
-from ..globals import DIR_RULES, df
+from ..globals import df
 
 rules = df[~df['first'].isna()]
 
@@ -30,7 +30,7 @@ def get_user_rules_index(mask, recipe):
 
 
     df_show = pd.DataFrame({'start': start_list, 'end':end_list,
-                            'class': class_list, 'color': color_list})   
+                            'class': class_list, 'color': color_list})
 
     df_show = df_show.drop_duplicates(['end']).drop_duplicates(['start']).sort_values('start')
     df_show['previous_end'] =   df_show['end'].shift(fill_value=0)
@@ -47,22 +47,22 @@ def format_user_recipe(df_show, recipe):
         for i, row in df_show.iterrows():
             start = row['start']
             if start>end:
-                previous = {"sentence": recipe[end:start], 
+                previous = {"sentence": recipe[end:start],
                     "class" : -1, "color": 0}
 
                 recipe_list.append(previous)
 
             end = row['end']
-            current = {"sentence": recipe[start:end], 
+            current = {"sentence": recipe[start:end],
                  "class" : int(row['class']), "color": int(row['color'])}
             recipe_list.append(current)
 
 
-        last = {"sentence": recipe[end:], 
+        last = {"sentence": recipe[end:],
          "class" : -1, "color": 0}
-        recipe_list.append(last) 
+        recipe_list.append(last)
     else:
-        previous = {"sentence": recipe, 
+        previous = {"sentence": recipe,
         "class" : -1, "color": 0}
 
         recipe_list.append(previous)

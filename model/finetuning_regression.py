@@ -1,22 +1,15 @@
 from sklearn.model_selection import train_test_split
-import pandas as pd
 import numpy as np
 import random
 import os
 import torch
-import json
 
 
-from transformers import AutoTokenizer, \
-                          AutoModelForSequenceClassification, \
-                          TrainingArguments, \
-                          Trainer, \
-                          EarlyStoppingCallback, \
-                          IntervalStrategy
+from transformers import AutoTokenizer
 
 from datasets.dataset_dict import DatasetDict
 from datasets import Dataset, load_metric
-from sklearn.metrics import mean_squared_error, mean_absolute_error
+from sklearn.metrics import mean_squared_error
 
 
 # MODEL_NAME = "./pretrain_bert" #"dbmdz/bert-base-italian-xxl-cased"
@@ -68,19 +61,19 @@ def create_dataset(df):
                                     'text': X_val}),
       'test': Dataset.from_dict({'label': y_test,
                                     'text': X_test})
-      })   
+      })
 
     return dataset
 
 
-                             
-def tokenize_dataset(dataset):                              
-    TOKENIZER = "distilroberta-base" 
-    tokenizer = AutoTokenizer.from_pretrained(TOKENIZER) 
+
+def tokenize_dataset(dataset):
+    TOKENIZER = "distilroberta-base"
+    tokenizer = AutoTokenizer.from_pretrained(TOKENIZER)
 
     def tokenize_function(examples):
         return tokenizer(examples['text'], padding="max_length",  truncation=True)
-        
+
     tokenized_datasets = dataset.map(tokenize_function, batched=True)
     return tokenized_datasets
 
@@ -88,7 +81,7 @@ def tokenize_dataset(dataset):
 def compute_metrics(eval_pred):
     metric1 = load_metric("mse")
     metric2 = load_metric("mae")
-    
+
     logits, labels = eval_pred
     predictions =logits
     mse = metric1.compute(predictions=predictions, references=labels)["mse"]

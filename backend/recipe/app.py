@@ -1,18 +1,15 @@
 
 
 
-from fastapi import Depends, FastAPI, HTTPException, status
+from fastapi import Depends, FastAPI, HTTPException
 from pydantic import BaseModel
-from typing import List, Union
+from typing import List
 from fastapi.middleware.cors import CORSMiddleware
 from .postgres_utils import get_select,save_metadata
 from .login import *
-from random import randrange
-from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
+from fastapi.security import OAuth2PasswordRequestForm
 import json
-import numpy as np
-import time
-from .example_recipe import choose_recipe 
+from .example_recipe import choose_recipe
 from .format_recipes.recipe import get_format_recipe
 from .format_recipes.user import format_show_recipe
 from .globals import NUMBER_OF_RULES
@@ -74,13 +71,13 @@ def complete(source: Source):
         print("Error in pipeline, returning random recipe.")
 
     bool_example, example = get_format_recipe(df_example['title'],
-                                    df_example['ingredients'], 
+                                    df_example['ingredients'],
                                     df_example['steps'], mask)
 
     print('MASK', mask)
 
-    user_recipe = format_show_recipe(mask, source.recipe) 
-    answer = Answer(user_recipe = user_recipe, 
+    user_recipe = format_show_recipe(mask, source.recipe)
+    answer = Answer(user_recipe = user_recipe,
                     example_recipe = example)
     return answer
 
@@ -100,11 +97,11 @@ def complete_3(source: Source):
     """
     df_example = get_select(query)
     df_example = df_example.iloc[0]
-    mask = [-1]*NUMBER_OF_RULES 
+    mask = [-1]*NUMBER_OF_RULES
     print("Returning random recipe.")
 
     bool_example, example = get_format_recipe(df_example['title'],
-                                    df_example['ingredients'], 
+                                    df_example['ingredients'],
                                     df_example['steps'], mask)
 
     print('bool_example', bool_example)
@@ -132,15 +129,15 @@ def complete_test(source: Source):
     print("Returning selected recipe.")
 
     _, example = get_format_recipe(df_example['title'],
-                                    df_example['ingredients'], 
+                                    df_example['ingredients'],
                                     df_example['steps'], mask)
 
     print(example)
 
-    user_recipe = format_show_recipe(mask, source.recipe) 
+    user_recipe = format_show_recipe(mask, source.recipe)
     print(user_recipe)
 
-    answer = Answer(user_recipe = user_recipe, 
+    answer = Answer(user_recipe = user_recipe,
                     example_recipe = example)
     return answer
 
@@ -150,7 +147,7 @@ def trace(event: UserEvent):
     print(event.user)
     print(event.event)
     metadata = {'user': event.user,
-    'event': event.event, 
+    'event': event.event,
     'details': json.dumps(event.details)}
 
     print("saving metadata: ", metadata)
@@ -175,9 +172,9 @@ def login(form_data: OAuth2PasswordRequestForm = Depends()):
 
     key = form_data.password
 
-    if not key in keyapps.keys():
+    if key not in keyapps.keys():
         raise HTTPException(status_code=400, detail="Incorrect username or key")
-    
+
     else:
         group = keyapps[key]
 
